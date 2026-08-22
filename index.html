@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raynix Agency | Elite Account Recovery</title>
+  <!-- Google Font for clean, premium look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome (optional icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0b1a12;  /* deep dark green */
+      color: #e2f0e6;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: #0f2017; /* rich dark-green panel */
+      border-radius: 48px 48px 32px 32px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 25px 50px -8px rgba(0,0,0,0.8);
+      border: 1px solid #2d4a3a;
+    }
+
+    /* ====== premium dark-green NFT aesthetic ====== */
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #d4f0d6;
+    }
+
+    h1 {
+      font-size: 3.8rem;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #c0f0c0, #a0d8b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: 2.6rem;
+      margin-bottom: 2rem;
+      border-left: 6px solid #3e8e5e;
+      padding-left: 1.2rem;
+      color: #d0f0d0;
+    }
+
+    .section-sub {
+      color: #8ebba0;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-sub {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: #b6d9c0;
+      max-width: 720px;
+      margin-bottom: 2.8rem;
+      border-left: 3px solid #3e8e5e;
+      padding-left: 1.8rem;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      margin: 2rem 0 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: transparent;
+      border: 2px solid #3e8e5e;
+      color: #d4f0d6;
+      padding: 0.9rem 2.6rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(2px);
+      background: rgba(30, 60, 45, 0.3);
+    }
+
+    .btn-primary {
+      background: #2d7a4a;
+      border-color: #2d7a4a;
+      color: #fff;
+      box-shadow: 0 8px 18px -6px #0f1f14;
+    }
+
+    .btn-primary:hover {
+      background: #3f9a62;
+      border-color: #3f9a62;
+      transform: scale(1.02);
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      border-color: #25D366;
+      color: #0b1a12;
+      font-weight: 700;
+      box-shadow: 0 8px 18px -6px #1f8b4b;
+    }
+
+    .btn-whatsapp i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .btn-whatsapp:hover {
+      background: #2ee074;
+      border-color: #2ee074;
+      transform: scale(1.02);
+    }
+
+    .btn-outline {
+      border: 2px solid #4d7a5e;
+      background: transparent;
+      color: #c6e2ce;
+    }
+
+    .btn-outline:hover {
+      background: #1d3a2a;
+      border-color: #6ba87e;
+    }
+
+    /* services grid */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.8rem;
+      margin: 2.8rem 0 3.2rem;
+    }
+
+    .service-card {
+      background: #14261c;
+      padding: 1.8rem 1.2rem;
+      border-radius: 28px;
+      border: 1px solid #2b4a36;
+      transition: 0.2s;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    }
+
+    .service-card:hover {
+      border-color: #4f8f66;
+      background: #182f22;
+      transform: translateY(-4px);
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      color: #d6f0da;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: #b0cfb8;
+      opacity: 0.9;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #1d3a2a;
+      padding: 0.25rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #aad0b4;
+      border: 1px solid #2f5a40;
+    }
+
+    /* why choose */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+      background: #0e1f16;
+      padding: 2rem 1.8rem;
+      border-radius: 36px;
+      margin: 2rem 0 3rem;
+      border: 1px solid #254f34;
+    }
+
+    .why-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 500;
+      color: #d4edda;
+    }
+
+    .why-item i {
+      color: #4daf72;
+      font-size: 1.8rem;
+      width: 2rem;
+    }
+
+    /* steps */
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 2.5rem 0;
+      counter-reset: step-counter;
+    }
+
+    .step {
+      flex: 1 0 160px;
+      background: #11261b;
+      border-radius: 28px;
+      padding: 1.6rem 1.2rem;
+      border-left: 6px solid #3e8e5e;
+      counter-increment: step-counter;
+      position: relative;
+    }
+
+    .step::before {
+      content: "0" counter(step-counter);
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #3a7b52;
+      display: block;
+      margin-bottom: 0.5rem;
+      opacity: 0.7;
+      letter-spacing: -1px;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 1.2rem;
+      color: #daf0de;
+      margin-bottom: 0.2rem;
+    }
+
+    .step p {
+      color: #b0cfb8;
+      font-size: 0.9rem;
+    }
+
+    /* testimonials */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin: 2.2rem 0;
+    }
+
+    .testimonial {
+      background: #12271d;
+      border-radius: 32px;
+      padding: 1.8rem 1.6rem;
+      border: 1px solid #2d4f38;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .testimonial i {
+      color: #4daf72;
+      font-size: 1.6rem;
+      opacity: 0.7;
+      margin-bottom: 0.4rem;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      color: #d0e8d4;
+      margin: 0.6rem 0;
+      font-size: 0.95rem;
+    }
+
+    .testimonial span {
+      font-weight: 600;
+      color: #b2dbbd;
+      font-size: 0.9rem;
+    }
+
+    .stat-highlight {
+      background: #0d1f15;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      display: inline-block;
+      border: 1px solid #3a7852;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* security & disclaimer */
+    .security-box, .disclaimer-box {
+      background: #0d1f15;
+      padding: 1.8rem 2rem;
+      border-radius: 32px;
+      border-left: 8px solid #3e8e5e;
+      margin: 2.4rem 0 1.8rem;
+    }
+
+    .security-box strong, .disclaimer-box strong {
+      color: #d6f0da;
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .disclaimer-box {
+      border-left-color: #6f8f7a;
+      background: #0d1f15;
+    }
+
+    .final-cta {
+      background: #11261b;
+      padding: 2.5rem 2rem;
+      border-radius: 48px;
+      text-align: center;
+      margin: 2.8rem 0 1.5rem;
+      border: 1px solid #3a6d4e;
+    }
+
+    .final-cta h2 {
+      border-left: none;
+      padding-left: 0;
+      font-size: 2.4rem;
+      text-align: center;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #244f32;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      color: #89b396;
+      font-size: 0.9rem;
+    }
+
+    .footer strong {
+      color: #b6dac0;
+    }
+
+    .footer a {
+      color: #7bb38a;
+      text-decoration: none;
+      border-bottom: 1px dotted transparent;
+    }
+
+    .footer a:hover {
+      border-bottom-color: #5f9c72;
+    }
+
+    .inline-icon {
+      margin-right: 8px;
+      color: #4daf72;
+    }
+
+    hr {
+      border: 0.5px solid #1f3d2b;
+      margin: 1.6rem 0;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 2rem 1.2rem; }
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 2rem; }
+      .btn-group { flex-direction: column; align-items: stretch; }
+      .btn { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- header / brand -->
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 2rem;">
+    <div>
+      <span style="font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px; color: #d6f0da;">RAYNIX <span style="color: #5fa87a;">AGENCY</span></span>
+      <div style="font-size: 0.85rem; color: #8ebba0; letter-spacing: 1px;">Professional Account Recovery &amp; Digital Support</div>
+    </div>
+    <div class="badge" style="font-size:0.8rem;"><i class="fas fa-shield-alt" style="margin-right: 6px;"></i> elite support</div>
+  </div>
+
+  <!-- HERO -->
+  <section>
+    <h1>Recover Your Account <br>with Elite Support</h1>
+    <div class="hero-sub">
+      Facing suspension, disable, hack, restriction or complete lock-out?<br>
+      Raynix Agency provides professional case assessment and recovery assistance for individuals and businesses across major platforms.
+    </div>
+    <div class="btn-group">
+      <a href="#" class="btn btn-primary"><i class="fas fa-file-alt" style="margin-right: 10px;"></i>Submit Your Case</a>
+      <!-- WhatsApp button – number hidden, label only -->
+      <a href="https://wa.me/8801406842432" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> WhatsApp Support
+      </a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section style="margin-top: 3.2rem;">
+    <span class="section-sub"><i class="fas fa-cog inline-icon"></i> our expertise</span>
+    <h2>Services</h2>
+    <div class="service-grid">
+      <div class="service-card"><h3>Instagram Recovery</h3><p>Suspended • Disabled • Hacked • Restricted • Inaccessible</p></div>
+      <div class="service-card"><h3>Facebook Recovery</h3><p>Disabled profiles • Hacked accounts • Restrictions • Access issues</p></div>
+      <div class="service-card"><h3>TikTok Recovery</h3><p>Suspended • Banned • Hacked • Restricted</p></div>
+      <div class="service-card"><h3>YouTube Recovery</h3><p>Terminated channels • Hacked • Restricted</p></div>
+      <div class="service-card"><h3>X Account Recovery</h3><p>Suspended • Locked • Restricted • Inaccessible</p></div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE -->
+  <section>
+    <span class="section-sub"><i class="fas fa-check-circle inline-icon"></i> why us</span>
+    <h2>Why Choose Raynix Agency</h2>
+    <div class="why-grid">
+      <div class="why-item"><i class="fas fa-briefcase"></i> Professional Case Assessment</div>
+      <div class="why-item"><i class="fas fa-lock"></i> Secure &amp; Confidential Handling</div>
+      <div class="why-item"><i class="fas fa-layer-group"></i> Multi-Platform Expertise</div>
+      <div class="why-item"><i class="fas fa-chart-line"></i> Transparent Process</div>
+      <div class="why-item"><i class="fas fa-user-check"></i> Dedicated Case Assistance</div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <span class="section-sub"><i class="fas fa-route inline-icon"></i> process</span>
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step"><strong>Submit Your Case</strong><p>Complete the form with accurate account details and evidence.</p></div>
+      <div class="step"><strong>Case Review</strong><p>Our team carefully reviews your situation and available options.</p></div>
+      <div class="step"><strong>Case Processing</strong><p>We guide you through the official recovery or appeal process.</p></div>
+      <div class="step"><strong>Receive Updates</strong><p>Track progress with your unique Case ID.</p></div>
+      <div class="step"><strong>Case Resolution</strong><p>Your case is completed once the platform reaches a final decision.</p></div>
+    </div>
+  </section>
+
+  <!-- CLIENT FEEDBACK -->
+  <section>
+    <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;">
+      <span class="section-sub"><i class="fas fa-star inline-icon"></i> testimonials</span>
+      <span class="stat-highlight"><i class="fas fa-check-circle" style="color:#4daf72;"></i> 99.99% Client Satisfaction</span>
+    </div>
+    <h2>Client Feedback</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial"><i class="fas fa-quote-left"></i><p>“My Instagram was disabled for months. Raynix Agency handled everything professionally and recovered it. Highly recommended.”</p><span>— Rafiq H., Business Owner</span></div>
+      <div class="testimonial"><i class="fas fa-quote-left"></i><p>“Facebook page restricted without reason. Clear communication and real results. Professional service.”</p><span>— Nadia S., Content Creator</span></div>
+      <div class="testimonial"><i class="fas fa-quote-left"></i><p>“TikTok banned + YouTube issues. One agency handled both cases smoothly.”</p><span>— Imran K., Digital Marketer</span></div>
+      <div class="testimonial"><i class="fas fa-quote-left"></i><p>“X account locked after a hack. They helped recover it without asking for any password. Very trustworthy.”</p><span>— Sara M., Entrepreneur</span></div>
+      <div class="testimonial"><i class="fas fa-quote-left"></i><p>“Best decision I made. Fast response, transparent process, and actual recovery.”</p><span>— Tanvir A., Agency Owner</span></div>
+    </div>
+  </section>
+
+  <!-- SECURITY NOTICE -->
+  <div class="security-box">
+    <strong><i class="fas fa-shield-alt" style="margin-right: 10px;"></i> Security Notice</strong>
+    <p style="color: #c6e2ce;">Never share your password, OTP, 2FA codes or backup codes. Raynix Agency never asks for private login credentials.</p>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-box">
+    <strong><i class="fas fa-exclamation-triangle" style="margin-right: 10px; color: #b8b84d;"></i> Important Disclaimer</strong>
+    <p style="color: #b6d4be;">Raynix Agency is an independent digital support service and is not affiliated with Meta, Instagram, Facebook, TikTok, YouTube, X, Google or any other platform. Recovery is never guaranteed. Outcome depends on platform policies and individual case strength.</p>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <h2 style="border-left: none; padding-left:0;">Ready to Recover Your Account?</h2>
+    <p style="color: #c6e2ce; margin-bottom: 2rem; font-size: 1.2rem;">Submit your case today and receive professional guidance based on your unique situation.</p>
+    <div class="btn-group" style="justify-content: center;">
+      <a href="#" class="btn btn-primary"><i class="fas fa-file-alt" style="margin-right: 8px;"></i>Submit Your Case</a>
+      <a href="https://wa.me/8801406842432" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> WhatsApp Support
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <strong>RAYNIX AGENCY</strong><br>
+      <span style="font-size:0.85rem;">Professional Account Recovery &amp; Digital Support</span>
+    </div>
+    <div style="text-align: right;">
+      © 2026 Raynix Agency. All Rights Reserved.
+    </div>
+  </div>
+
+  <!-- small note: WhatsApp number never shown, only button label -->
+  <div style="text-align: center; margin-top: 1rem; font-size: 0.7rem; opacity: 0.3; letter-spacing: 0.5px;">✦ premium recovery assistance ✦</div>
+</div>
+<!-- end container -->
+</body>
+</html>
