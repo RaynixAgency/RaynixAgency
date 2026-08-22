@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAYNIX · Digital Sovereignty & Recovery</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0a0f;
+      background-image: 
+        radial-gradient(ellipse at 20% 50%, rgba(100, 40, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 200, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(200, 50, 255, 0.06) 0%, transparent 40%);
+      font-family: 'Inter', sans-serif;
+      color: #e8e4f0;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .glass-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: rgba(10, 10, 18, 0.75);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 3rem;
+      padding: 3rem 2.8rem;
+      box-shadow: 
+        0 40px 100px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+        0 0 80px rgba(100, 40, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* holographic shimmer overlay */
+    .glass-container::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -60%;
+      width: 220%;
+      height: 220%;
+      background: 
+        radial-gradient(circle at 30% 40%, rgba(120, 60, 255, 0.04), transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(0, 220, 255, 0.03), transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glass-container > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* ===== HOLOGRAPHIC GRADIENT TEXT ===== */
+    .glow-text {
+      background: linear-gradient(135deg, #a78bfa 0%, #7c3aed 30%, #06b6d4 70%, #a78bfa 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 60px rgba(124, 58, 237, 0.25);
+      animation: shimmerText 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes shimmerText {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* ===== GLOW BORDER ACCENTS ===== */
+    .glow-border {
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      box-shadow: 0 0 30px rgba(124, 58, 237, 0.05), inset 0 0 30px rgba(124, 58, 237, 0.02);
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: #9490a8;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      border-left: 3px solid #7c3aed;
+      padding-left: 1.2rem;
+      opacity: 0.8;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.2), rgba(6, 182, 212, 0.15), transparent);
+      margin: 3rem 0;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: #9490a8;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      display: inline-block;
+      padding: 0.4rem 1.4rem;
+      border-radius: 100px;
+      background: rgba(124, 58, 237, 0.04);
+      backdrop-filter: blur(4px);
+      width: fit-content;
+    }
+
+    .hero-badge i {
+      color: #7c3aed;
+      margin-right: 6px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 12vw, 6.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-tagline {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #d4cee8;
+      margin-top: -0.2rem;
+    }
+
+    .hero-desc {
+      max-width: 680px;
+      font-size: 1.1rem;
+      color: #b0abc4;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem 2rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3aed, #5b21b6);
+      border: none;
+      padding: 0.9rem 3rem;
+      border-radius: 60px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 8px 40px rgba(124, 58, 237, 0.35);
+      transition: 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary i {
+      margin-right: 10px;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 50px rgba(124, 58, 237, 0.55);
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.9rem 2.5rem;
+      border-radius: 60px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #d4cee8;
+      cursor: pointer;
+      transition: 0.25s;
+      text-decoration: none;
+      display: inline-block;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-outline i {
+      margin-right: 8px;
+    }
+
+    .btn-outline:hover {
+      background: rgba(124, 58, 237, 0.06);
+      border-color: rgba(124, 58, 237, 0.3);
+      color: #fff;
+    }
+
+    .whatsapp-direct {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+      color: #b0abc4;
+      text-decoration: none;
+      font-weight: 400;
+      transition: 0.2s;
+      padding: 0.4rem 0.8rem;
+      border-radius: 60px;
+      border: 1px solid rgba(37, 211, 102, 0.1);
+    }
+
+    .whatsapp-direct i {
+      color: #25D366;
+      font-size: 1.4rem;
+    }
+
+    .whatsapp-direct:hover {
+      color: #fff;
+      border-color: rgba(37, 211, 102, 0.3);
+      background: rgba(37, 211, 102, 0.04);
+    }
+
+    /* ===== DISTINCTION GRID ===== */
+    .distinction-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .distinction-item {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 1.8rem 1.5rem;
+      border-radius: 1.8rem;
+      border: 1px solid rgba(124, 58, 237, 0.06);
+      backdrop-filter: blur(8px);
+      transition: 0.3s;
+    }
+
+    .distinction-item:hover {
+      background: rgba(124, 58, 237, 0.04);
+      border-color: rgba(124, 58, 237, 0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 40px rgba(124, 58, 237, 0.04);
+    }
+
+    .distinction-item i {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #a78bfa, #06b6d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .distinction-item h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #e8e4f0;
+    }
+
+    .distinction-item p {
+      font-size: 0.88rem;
+      color: #9490a8;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* ===== SERVICES ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .service-card {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 1.8rem;
+      padding: 1.8rem 1.5rem;
+      border: 1px solid rgba(124, 58, 237, 0.05);
+      backdrop-filter: blur(4px);
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(124, 58, 237, 0.15);
+      background: rgba(124, 58, 237, 0.03);
+      box-shadow: 0 0 40px rgba(124, 58, 237, 0.03);
+    }
+
+    .service-card h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e8e4f0;
+      margin-bottom: 0.3rem;
+    }
+
+    .service-card .platform-icon {
+      font-size: 1.2rem;
+      color: #7c3aed;
+      margin-right: 0.5rem;
+    }
+
+    .service-card ul {
+      list-style: none;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: #b0abc4;
+      font-weight: 300;
+    }
+
+    .service-card ul li {
+      padding: 0.15rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-card ul li i {
+      font-size: 0.3rem;
+      color: #7c3aed;
+    }
+
+    /* ===== STEPS ===== */
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .step {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: rgba(255, 255, 255, 0.01);
+      border-radius: 2rem;
+      border: 1px solid rgba(124, 58, 237, 0.04);
+      transition: 0.3s;
+    }
+
+    .step:hover {
+      border-color: rgba(124, 58, 237, 0.08);
+      background: rgba(124, 58, 237, 0.02);
+    }
+
+    .step-number {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      background: linear-gradient(135deg, #7c3aed, #06b6d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      opacity: 0.5;
+      letter-spacing: -0.02em;
+    }
+
+    .step h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0.5rem 0 0.2rem;
+      color: #e8e4f0;
+    }
+
+    .step p {
+      font-size: 0.82rem;
+      color: #9490a8;
+      font-weight: 300;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .testimonial {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 1.8rem 1.5rem;
+      border-radius: 2rem;
+      border: 1px solid rgba(124, 58, 237, 0.04);
+      backdrop-filter: blur(4px);
+      transition: 0.3s;
+    }
+
+    .testimonial:hover {
+      border-color: rgba(124, 58, 237, 0.08);
+    }
+
+    .testimonial .stars {
+      color: #f59e0b;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .testimonial blockquote {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: #d4cee8;
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 0.8rem;
+    }
+
+    .testimonial .author {
+      font-weight: 500;
+      color: #e8e4f0;
+      font-size: 0.9rem;
+    }
+
+    .testimonial .author span {
+      font-weight: 300;
+      color: #9490a8;
+      font-size: 0.8rem;
+    }
+
+    /* ===== SECURITY ===== */
+    .security-box {
+      background: rgba(124, 58, 237, 0.03);
+      border-left: 3px solid #7c3aed;
+      padding: 1.5rem 2rem;
+      border-radius: 1.2rem;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: #b0abc4;
+      border: 1px solid rgba(124, 58, 237, 0.06);
+    }
+
+    .security-box strong {
+      color: #e8e4f0;
+    }
+
+    .security-box i {
+      color: #7c3aed;
+    }
+
+    .disclaimer {
+      font-size: 0.78rem;
+      color: #6a647a;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      margin-top: 2rem;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-top: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .footer .brand {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .footer .brand .glow-text {
+      font-weight: 800;
+    }
+
+    .footer .copy {
+      font-size: 0.8rem;
+      color: #6a647a;
+    }
+
+    .footer .future-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2.5rem;
+      font-size: 0.8rem;
+      color: #9490a8;
+    }
+
+    .footer .future-links span {
+      cursor: default;
+      opacity: 0.5;
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.03);
+      transition: 0.2s;
+    }
+
+    .footer .future-links span:hover {
+      opacity: 0.8;
+    }
+
+    .footer .future-links i {
+      margin-right: 6px;
+      color: #7c3aed;
+      opacity: 0.5;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .glass-container {
+        padding: 1.8rem 1.2rem;
+        border-radius: 1.8rem;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-tagline {
+        font-size: 1.2rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .btn-primary,
+      .btn-outline {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .whatsapp-direct {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0.8rem;
+      }
+      .glass-container {
+        padding: 1.2rem 0.8rem;
+        border-radius: 1.2rem;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .distinction-grid,
+      .services-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="glass-container">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-badge">
+      <i class="fas fa-gem"></i> Elite Digital Concierge
+    </div>
+
+    <h1>
+      <span class="glow-text">RAYNIX</span>
+    </h1>
+    <div class="hero-tagline">Digital Sovereignty &amp; Recovery</div>
+
+    <p class="hero-desc">
+      When your digital identity is compromised — by suspension, hacking, or algorithmic error —
+      you need a dedicated partner with the expertise to navigate the most complex platform bureaucracies.
+      Raynix is the premier recovery concierge for high-value individuals and enterprises.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#" class="btn-primary"><i class="fas fa-paper-plane"></i> Initiate Consultation</a>
+      <a href="#" class="btn-outline"><i class="fas fa-search"></i> Track Case Status</a>
+      <a href="https://wa.me/8801406842432" target="_blank" class="whatsapp-direct">
+        <i class="fab fa-whatsapp"></i> +8801406842432
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= WHY RAYNIX ================= -->
+  <section>
+    <h2 class="section-title">The <span class="glow-text">Raynix</span> Distinction</h2>
+    <div class="section-sub">Why high-net-worth individuals and enterprises trust us</div>
+
+    <div class="distinction-grid">
+      <div class="distinction-item">
+        <i class="fas fa-chess-queen"></i>
+        <h4>Elite Case Strategy</h4>
+        <p>We craft compelling narratives tailored to each platform's review criteria.</p>
+      </div>
+      <div class="distinction-item">
+        <i class="fas fa-user-secret"></i>
+        <h4>Absolute Discretion</h4>
+        <p>Your data and identity are handled with the highest confidentiality.</p>
+      </div>
+      <div class="distinction-item">
+        <i class="fas fa-layer-group"></i>
+        <h4>Multi-Platform Command</h4>
+        <p>Deep, proprietary knowledge of Instagram, Facebook, TikTok, YouTube, X &amp; more.</p>
+      </div>
+      <div class="distinction-item">
+        <i class="fas fa-sync-alt"></i>
+        <h4>End-to-End Transparency</h4>
+        <p>Continuous, clear communication at every stage of your case.</p>
+      </div>
+      <div class="distinction-item">
+        <i class="fas fa-headset"></i>
+        <h4>Human-Centric Support</h4>
+        <p>Direct access to a dedicated case manager, not a bot.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= SERVICES ================= -->
+  <section>
+    <h2 class="section-title">Core <span class="glow-text">Services</span></h2>
+    <div class="section-sub">Platform-specific restoration &amp; resolution</div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <h4><i class="fab fa-instagram platform-icon"></i> Instagram Restoration</h4>
+        <ul>
+          <li><i class="fas fa-circle"></i> Disabled / hacked / restricted</li>
+          <li><i class="fas fa-circle"></i> Content &amp; brand page recovery</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h4><i class="fab fa-facebook platform-icon"></i> Facebook Resolution</h4>
+        <ul>
+          <li><i class="fas fa-circle"></i> Disabled profiles &amp; pages</li>
+          <li><i class="fas fa-circle"></i> Ad account reinstatement</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h4><i class="fab fa-tiktok platform-icon"></i> TikTok Reinstatement</h4>
+        <ul>
+          <li><i class="fas fa-circle"></i> Banned / suspended / shadowbanned</li>
+          <li><i class="fas fa-circle"></i> Account restoration</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h4><i class="fab fa-youtube platform-icon"></i> YouTube Recovery</h4>
+        <ul>
+          <li><i class="fas fa-circle"></i> Terminated channels</li>
+          <li><i class="fas fa-circle"></i> Hacked access &amp; policy violations</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h4><i class="fab fa-x-twitter platform-icon"></i> X Reclamation</h4>
+        <ul>
+          <li><i class="fas fa-circle"></i> Suspended / locked / compromised</li>
+          <li><i class="fas fa-circle"></i> Full account restoration</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= PROTOCOL ================= -->
+  <section>
+    <h2 class="section-title">The <span class="glow-text">Raynix</span> Protocol</h2>
+    <div class="section-sub">A precise, 5‑step process for every case</div>
+
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-number">01</div>
+        <h5>Discovery</h5>
+        <p>Submit your case for a comprehensive initial assessment.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <h5>Strategy</h5>
+        <p>We design a bespoke recovery plan tailored to your situation.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h5>Execution</h5>
+        <p>We navigate the appeals process with precision and compliance.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <h5>Monitoring</h5>
+        <p>Real‑time updates and strategic insights as your case progresses.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">05</div>
+        <h5>Resolution</h5>
+        <p>Outcome delivered, plus guidance on securing your assets.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section>
+    <h2 class="section-title">Client <span class="glow-text">Testimonials</span></h2>
+    <div class="section-sub">98.7% success rate across thousands of cases</div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote>“After three months of radio silence from Instagram, Raynix had my account restored in just 11 days. Their strategic approach is unparalleled.”</blockquote>
+        <div class="author">Rafiq H. <span>· Founder &amp; CEO</span></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote>“My Facebook page represented years of work. Raynix’s professionalism made the process seamless and stress‑free.”</blockquote>
+        <div class="author">Nadia S. <span>· Award‑Winning Creator</span></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote>“They recovered my TikTok and YouTube simultaneously. The clarity and communication were exceptional — a true team of professionals.”</blockquote>
+        <div class="author">Imran K. <span>· Digital Strategist</span></div>
+      </div>
+      <div class="testimonial">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote>“My X account was locked after a sophisticated hack. Raynix handled it with precision and absolute trustworthiness.”</blockquote>
+        <div class="author">Sara M. <span>· Venture Capitalist</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= SECURITY + DISCLAIMER ================= -->
+  <section>
+    <div class="security-box">
+      <strong><i class="fas fa-shield-alt" style="margin-right: 10px;"></i> Security &amp; Ethics Pledge</strong><br />
+      We <strong>never</strong> request your password, OTP, 2FA codes, or backup credentials. Your security is our priority.
+    </div>
+
+    <div class="disclaimer">
+      <i class="fas fa-info-circle" style="margin-right: 8px; opacity: 0.5;"></i>
+      Raynix Agency is an independent, specialized consultancy. We are <strong>not affiliated</strong> with Meta, Instagram, Facebook, TikTok, YouTube, X, Google, or any other platform. All recovery outcomes are subject to the final decision of the respective platform.
+    </div>
+  </section>
+
+  <!-- ================= FOOTER CTA ================= -->
+  <div class="divider" style="margin-bottom: 1.5rem;"></div>
+
+  <section style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
+    <div>
+      <h3 style="font-size: 1.8rem; font-weight: 600;">Begin Your <span class="glow-text">Recovery</span></h3>
+      <p style="color: #9490a8; font-weight: 300;">Take the first step toward reclaiming your digital presence.</p>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+      <a href="#" class="btn-primary"><i class="fas fa-paper-plane"></i> Initiate Consultation</a>
+      <a href="https://wa.me/8801406842432" target="_blank" class="btn-outline" style="border-color: rgba(37, 211, 102, 0.15);">
+        <i class="fab fa-whatsapp" style="color: #25D366;"></i> Direct Concierge
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="brand">
+      <span class="glow-text">RAYNIX</span>
+      <span style="font-weight:300; color:#9490a8; font-size:0.9rem;">· Digital Sovereignty &amp; Recovery</span>
+    </div>
+    <div class="copy">© 2026 Raynix Agency. All Rights Reserved.</div>
+
+    <!-- Future-ready sections -->
+    <div class="future-links">
+      <span><i class="fas fa-chart-line"></i> Live Success Counter</span>
+      <span><i class="fas fa-video"></i> Video Case Studies</span>
+      <span><i class="fas fa-tags"></i> Tiered Packages</span>
+      <span><i class="fas fa-globe"></i> Multi‑Language</span>
+      <span><i class="fas fa-newspaper"></i> Recovery Guides</span>
+    </div>
+  </footer>
+
+</div>
+<!-- end glass-container -->
+
+</body>
+  </html>
